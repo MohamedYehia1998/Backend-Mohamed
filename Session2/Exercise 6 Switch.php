@@ -2,7 +2,7 @@
 
 echo "Exercise 6 With Switch <br> <br>";
 
-$grade = 90;
+$grade = 66;
 
 switch (true) {
     case $grade >= 90:
@@ -41,7 +41,6 @@ echo "<br> $s <br>";
 
 echo "Exercise 6 With Switch (Alternative) <br> <br>";
 
-$grade = 40;
 
 $digit = intdiv($grade,10);
 
