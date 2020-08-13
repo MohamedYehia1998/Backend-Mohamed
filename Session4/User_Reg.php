@@ -158,23 +158,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <br>
 
         <label>0-1</label>
-        <input type="radio" value = "0-1" name="experience" >
+        <input type="radio" value = "0-1" <?php echo (isset($_POST['experience'])) ? (($_POST['experience'] == "0-1")? "checked":"" ): ""; ?> name="experience" >
 
         <label>1-5</label>
-        <input type="radio" value = "1-5" name="experience">
+        <input type="radio" value = "1-5" <?php echo (isset($_POST['experience'])) ? (($_POST['experience'] == "1-5")? "checked":"" ): ""; ?> name="experience">
 
         <label>5+</label>
-        <input type="radio" value = "5+" name="experience">
+        <input type="radio" value = "5+" <?php echo (isset($_POST['experience'])) ? (($_POST['experience'] == "5+")? "checked":"" ): ""; ?>name="experience">
 
         <br><br>
 
         <label>Military Status</label>
 
-        <select name="Military Status">
-                <option value="-">Please pick an option</option>
-                <option value="done">I finished my military service</option>
-                <option value="exempt">I am exempt from military service</option>
-                <option value="not done">I did not finish my military service yet</option>
+        <select name="Military_Status">
+                <option value="-" <?php echo (isset($POST['Military_Status'])) ? (($_POST['Military_Status'] == "")?  "selected":"" ): ""; ?>>Please pick an option</option>
+                <option value="done" <?php echo (isset($_POST['Military_Status'])) ? (($_POST['Military_Status'] == "done")? "selected":"" ): ""; ?>>I finished my military service</option>
+                <option value="exempt" <?php echo (isset($_POST['Military_Status'])) ? (($_POST['Military_Status'] == "exempt")? "selected":"" ): ""; ?>>I am exempt from military service</option>
+                <option value="not done" <?php echo (isset($_POST['Military_Status'])) ? (($_POST['Military_Status'] == "not done")? "selected":"" ): ""; ?>>I did not finish my military service yet</option>
         </select>
 
         <span style="color: red"><?= isset($errors['Military_Status']) ? $errors['Military_Status'] : '' ?></span>
@@ -186,13 +186,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label>Qualification(s)</label>
         
 
-        <input type="checkbox" name="qualifications[]" value="bsc">
+        <input type="checkbox" name="qualifications[]" value="bsc"<?php echo (isset($_POST['qualifications'])) ? ((in_array("bsc", $_POST['qualifications']))?  "checked":"" ): ""; ?> >
         <label> BSc</label>
 
-        <input type="checkbox" name="qualifications[]" value="msc">
+        <input type="checkbox" name="qualifications[]" value="msc"<?php echo (isset($_POST['qualifications'])) ? ((in_array("msc", $_POST['qualifications']))?  "checked":"" ): ""; ?>>
         <label> MSc</label>
 
-        <input type="checkbox" name="qualifications[]" value="phd">
+        <input type="checkbox" name="qualifications[]" value="phd"<?php echo (isset($_POST['qualifications'])) ? ((in_array("phd", $_POST['qualifications']))?  "checked":"" ): ""; ?>>
         <label> phD</label>
 
         <span style="color: red"><?= isset($errors['qualifications']) ? $errors['qualifications'] : '' ?></span>
