@@ -3,7 +3,7 @@
     <form method = "post" action = "task3_ex3_backend.php">
         <body>
 
-        <h1>Task 3 Exercise 3</h3>
+        <h1>Task 3 Exercise 3</h1>
 
         <h3>Student 1</h3>
         <label>name</label> <input name = "n1">
