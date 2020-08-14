@@ -38,6 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         ];
 
         $nobody = TRUE;
+        $moreThan50 = [];
 
         for ($i=0; $i < count($student_array); $i++) { 
             
@@ -45,6 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 $name = $student_array[$i][0];
                 $grade = $student_array[$i][1];
+                array_push($moreThan50, [$name, $grade]);
                 $nobody = FALSE;
                 
                 echo "Student: $name <br>";
@@ -55,10 +57,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         if($nobody){
-            echo "No student has a degree more than 50";
+            exit("No student has a degree more than 50");
         }
-
-
     
     }
 
@@ -71,3 +71,24 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 ?>
+
+
+
+
+<table> 
+<thead>
+	<tr>
+	 <th>Student</th>
+	 <th>Grade</th>
+	</tr>
+</thead>
+
+<tbody>
+       <tr>
+	 <?php foreach ($moreThan50 as $x){ ?>
+	 <td> <?php echo $x[0]; ?> </td>
+	 <td> <?php echo $x[1]; ?> </td>
+      </tr>
+	<?php } ?>
+</tbody>
+</table>
