@@ -43,7 +43,7 @@ class Animal{
     
       
     function walk(){
-      $x = $this->name;
+      $name = $this->name;
       echo "Animal $x walks";
     } 
     
