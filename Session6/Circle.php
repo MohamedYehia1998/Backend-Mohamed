@@ -18,9 +18,9 @@ class Circle extends Shape{
 
     
     public function getFullDescription(){
-        $r = $this->radius;
-        $n = $this->name;
-        return "Circle<#" . static::SHAPE_TYPE . ">: $n - $r <br>";
+        $radius = $this->radius;
+        $name = $this->name;
+        return "Circle<#" . static::SHAPE_TYPE . ">: $name - $radius <br>";
     }
 }
 

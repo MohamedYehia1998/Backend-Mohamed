@@ -35,10 +35,10 @@
 
     
     public function getFullDescription(){
-        $l = $this->length;
-        $w = $this->width;
-        $n = $this->name;
-        return "Shape<#" . static::SHAPE_TYPE . ">: $n - $l x $w <br>";
+        $length = $this->length;
+        $width = $this->width;
+        $name = $this->name;
+        return "Shape<#" . static::SHAPE_TYPE . ">: $name - $length x $width <br>";
     }
     
 }

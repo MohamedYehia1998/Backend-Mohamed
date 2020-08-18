@@ -46,6 +46,7 @@ class Animal{
       $x = $this->name;
       echo "Animal $x walks";
     } 
+    
 
 # method to be overriden then overloaded, hence is written via a call function not a talk() function in the parent as well as child!
     function __call($name, $args){
