@@ -20,8 +20,8 @@ class Lion extends Animal{
     }
 
     function walk(){
-        $x = $this->get_name();
-        echo "Lion $x walks <br>";
+        $name = $this->get_name();
+        echo "Lion $name walks <br>";
     }
 
     function __call($name, $args){
