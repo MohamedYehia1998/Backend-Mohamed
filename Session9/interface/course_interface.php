@@ -1,6 +1,7 @@
 <?php
 
 require_once("../models/Course.php");
+require_once("../models/Instructor.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -13,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $courses = Course::all_courses();
+$instructors = Instructor::all();   # all instructor tuples
 
 
 ?>
@@ -27,8 +29,15 @@ $courses = Course::all_courses();
             <label>Description</label>
             <input name = description>
             <br>
+
             <label>Instructor ID</label>
-            <input name = instructor_id>
+            <select name="instructor_id">
+                <?php
+                foreach ($instructors as $instructor) { ?>
+                    <option value= <?php echo $instructor->id; ?> > <?php echo $instructor->id; ?>  </option>
+                <?php}?>
+            </select>
+
             <button type = "submit">Submit</button>
         </form>
 
