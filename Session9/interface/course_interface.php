@@ -35,7 +35,7 @@ $instructors = Instructor::all();   # all instructor tuples
                 <?php
                 foreach ($instructors as $instructor) { ?>
                     <option value= <?php echo $instructor->id; ?> > <?php echo $instructor->id; ?>  </option>
-                <?php}?>
+                <?php } ?>
             </select>
 
             <button type = "submit">Submit</button>
