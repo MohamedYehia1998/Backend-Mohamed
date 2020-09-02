@@ -5,7 +5,7 @@ require_once('../models/Student.php');
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $student1 = new Student();
-    echo "<br> Student created";
+    echo "Student created <br>";
 
     $student1->set_firstName($_POST["first_name"]);
     $student1->set_lastName($_POST["last_name"]);

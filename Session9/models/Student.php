@@ -44,7 +44,6 @@ class Student{
     public function get_occupation(){
         return $this->email;
     }
-    #####
 
     public function set_firstName($firstName){
         $this->firstName = $firstName;
@@ -77,13 +76,6 @@ class Student{
         global $connection;   # use the connection variable in the dbConnect file inside this function (hence the word global).
         self::$connection = $connection; # now connect the student object with the mysql database
 
-       # $firstName = $this->get_firstName();
-       # $lastName = $this->get_lastName();
-       # $education = $this->get_education();
-        #$email = $this->get_email();
-        #$phone = $this->get_phone();
-        #$occupation = $this->get_occupation();
-
         $sql = "INSERT INTO students (first_name, last_name, education, email, phone, occupation) 
         VALUES (:firstName, :lastName, :education, :email, :phone, :occupation)"; 
 
@@ -96,10 +88,24 @@ class Student{
             'email' => $this->email
         ];
 
-        $prepared_sql = self::$connection->prepare($sql);
+        // $sql = "INSERT INTO students (first_name, last_name, education, email, phone, occupation) 
+        // VALUES (?, ?, ?, ?, ?, ?)"; 
+
+        // $data = [
+        //     $this->firstName,
+        //     $this->lastName,
+        //     $this->education,
+        //     $this->phone,
+        //     $this->occupation,
+        //     $this->email
+        // ];
+
+        $prepared_sql = self::$connection->prepare($sql);  # create PDO statement object
         $prepared_sql->execute($data);
 
         #return the newly entered row
+
+        #Last insert row id works only with a PDO object not a PDO statement (the one returned by the prepare function)
         return self::$connection->lastInsertId();
 
     }
@@ -116,6 +122,8 @@ class Student{
         $prepared_sql->execute();
 
         #return ALL present rows
+
+        #FetchAll works only with a PDO statement object (the one returned by the prepare function) not a PDO object (PHP PDO manual)
         return $prepared_sql->fetchAll(PDO::FETCH_OBJ);
 
     }
