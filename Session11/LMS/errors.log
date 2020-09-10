@@ -1,0 +1,6 @@
+SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+SQLSTATE[HY000] [1049] Unknown database 'lmsaaa'
+SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+
+SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+

@@ -1,0 +1,22 @@
+Routes:
+
+Create
+GET /instructors/create (Gets the create form)
+
+Store
+POST /instructors (Saves to the database)
+
+Read (List All)
+GET /instructors (Gets all instructors)
+
+Read (Show)
+GET /instructors/{id} (Gets the instructor with the given id)
+
+Edit
+GET /instructors/{id}/edit (Gets the edit instructor form)
+
+Update
+PUT /instructors/{id} (Saves instructor edits to database)
+
+Delete
+DELETE /instructors/{id} (Deletes instructor with given id)
