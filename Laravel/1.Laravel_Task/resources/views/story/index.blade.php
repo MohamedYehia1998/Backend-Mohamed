@@ -27,10 +27,11 @@ table.center {
 <div class="w3-container">
 
 <section id="ABC">
-  <h1 style=color:white;position:absolute;left:43%;top:10px;>Stories</h1>
+  <h1 style=color:white;position:absolute;left:43%;top:10px;font-style:oblique;>Stories</h1>
 
 
-  <div style="color:white;height:20% background-color: lightgreen">{{ $success ?? '' }}</div> <br><br><br><br>
+  <!-- <div style="color:white;height:20% background-color: lightgreen">{{ $success ?? '' }}</div> <br><br><br><br> -->
+  <h3 style=position:absolute;left:40px;color:darkblue;background-color:lightblue>{{ $success ?? '' }}</h3> <br><br><br><br>
 
   <table class="w3-table-all w3-large" style= margin-left:auto;margin-right:auto;width:67%>
     <tr class = w3-indigo>
@@ -53,7 +54,7 @@ table.center {
   </table>
 </div>
 <br>
-<a href="{{ route('stories.create') }}"><button style=background-color:white;border-radius:12px;color:black;width:20%;position:absolute;left:260px;top:5%>Add Story</button></a>
+<a href="{{ route('stories.create') }}"><button style=background-color:white;border-radius:12px;color:black;width:10%;position:absolute;left:1120px;top:7%>+ New Story</button></a>
 
 </body>
 </html>

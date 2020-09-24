@@ -133,16 +133,12 @@ class StoryController extends Controller
                 $errors['content'] = "* Content is required";
             }
 
-            return view('story.edit')->with('errors', $errors);
+            return view('story.edit')->with('errors', $errors)->with('story',$story);
             
         }
 
         else if(!empty($story->title) && !empty($story->content)){
             $story->save();
-            $success = "Edit Successful";
-
-            $stories = Story::all();
-
             return redirect(route('stories.show',$story->id));
             
         }
