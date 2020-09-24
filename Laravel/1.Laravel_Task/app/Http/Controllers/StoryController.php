@@ -133,7 +133,7 @@ class StoryController extends Controller
                 $errors['content'] = "* Content is required";
             }
 
-            return view('story.create')->with('errors', $errors);
+            return view('story.edit')->with('errors', $errors);
             
         }
 
@@ -143,7 +143,7 @@ class StoryController extends Controller
 
             $stories = Story::all();
 
-            return view('story.index')->with(compact('stories', 'success'));
+            return redirect(route('stories.show',$story->id));
             
         }
 

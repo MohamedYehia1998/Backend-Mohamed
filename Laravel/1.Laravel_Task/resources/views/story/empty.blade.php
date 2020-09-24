@@ -13,13 +13,13 @@
 }
 </style>
 </head>
-<body style=background-color:powderblue;>
+<body style=background-color:white;>
 
 
 
 
 <div class="center">
-    <p style = font-size:65pt;color:#007366;backgroundcolor:#007366>No Stories Found</p> <br> 
+    <p style = font-size:65pt;color:darkblue;>No Stories Found</p> <br> 
     <p style = font-size:95pt></p>
 </div>
 

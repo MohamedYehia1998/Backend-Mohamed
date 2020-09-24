@@ -15,22 +15,31 @@
 </head>
 <body>
 
+<style>
 
 
+#ABC {
+      background-color: darkblue;
+      height: 40%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
 
-<div class="center">
-    <p style = font-size:45pt;color:#003366>{{ $story->title }}</p> <br> 
-    <p style = font-size:95pt></p>
-</div>
 
-<div class="center">
-    <p style = font-size:17pt;color:#FF0000>{{ $story->content }}</p>
-</div>
+</style>
 
-<a href="{{route('stories.index')}}">Back</a> <br><br>
+<section id="ABC">
 
-<a href="{{route('stories.create')}}">Create a new story</a> <br><br>
+<h1 style=position:absolute;left:35%;top:27%;color:black;display:block;font-size:6em;font-style:oblique;>{{ $story->title }}</h1> <br>
+<h1 style=position:absolute;left:35%;top:124%;color:black;display:block;font-size:2em;font-style:oblique;>{{ $story->content }}</h1> <br>
 
+
+<a href="{{route('stories.index')}}"><button style=background-color:lightblue;border-radius:12px;position:absolute;top:200%;width:10%;>Back</button></a> <br><br>
+
+
+<a href="{{ route('stories.create') }}"><button style=background-color:lightblue;border-radius:12px;position:absolute;top:220%;width:10%;>Add Story</button></a>
 
 
 

@@ -116,7 +116,7 @@
         <input class="first-name" type="text" name="title" placeholder="example: Harry Potter" />
         
         <h4>Content</h4>
-        <textarea name = "content" rows="5"></textarea>
+        <textarea name = "content" rows="10"></textarea>
         <div class="btn-block">
           <button type="submit">Save</button>
         </div>
