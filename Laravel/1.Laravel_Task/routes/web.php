@@ -15,7 +15,7 @@ use App\Http\Controllers\StoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('stories.index'));
 });
 
 Route::resource('stories', StoryController::class);
