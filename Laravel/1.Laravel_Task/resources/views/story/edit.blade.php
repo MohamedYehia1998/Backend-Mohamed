@@ -107,9 +107,15 @@
       @method('PUT')
         <h1>Edit {{ $story->title }}</h1>
 
-        @foreach($errors as $error)
-        <div style="color:darkred; background-color: pink">{{ $error ?? '' }}</div>
-        @endforeach 
+        @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li style=color:darkred;background-color:pink>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
 
         <h4>Title</h4>
         <input class="first-name" type="text" name="title" value = "{{$story->title}}"/>

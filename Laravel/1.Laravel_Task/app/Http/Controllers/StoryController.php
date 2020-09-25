@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;   // create the errors variable
+use Illuminate\View\Middleware\ShareErrorsFromSession;  // bind the errors variable to the view
 use App\Models\Story;
 
 class StoryController extends Controller
@@ -48,35 +50,41 @@ class StoryController extends Controller
         $story->title = $request->input('title');
         $story->content = $request->input('content');
 
-        $errors = [];
+        # Laravel's validation will do what you did in the highlighted code (except that it won't display errors)
+    
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+        
         $success;
 
-        if(empty($story->title) || empty($story->content)){
+        // $errors = [];
 
-            if(empty($story->title)){
-                $errors['title'] = "* Title is required";
-            }
+        // if(empty($story->title) || empty($story->content)){
 
-            if(empty($story->content)){
-                $errors['content'] = "* Content is required";
-            }
+        //     if(empty($story->title)){
+        //         $errors['title'] = "* Title is required";
+        //     }
 
-            return view('story.create')->with('errors', $errors);
+        //     if(empty($story->content)){
+        //         $errors['content'] = "* Content is required";
+        //     }
+
+        //     return view('story.create')->with('errors', $errors);
             
-        }
+        // }
 
-        else if(!empty($story->title) && !empty($story->content)){
-            $story->save();
-            $title = $story->title;
-            $success = "$title story added successfully!";
 
-            $stories = Story::all();
+        $story->save();
+        $title = $story->title;
+        $success = "$title story added successfully!";
 
-            return view('story.index')->with(compact('stories', 'success'));
-            
-        }
+        $stories = Story::all();
 
-       
+        return view('story.index')->with(compact('stories', 'success'));
+              
         
     }
 
@@ -120,30 +128,15 @@ class StoryController extends Controller
         $story->title = $request->input('title');
         $story->content = $request->input('content');
 
-        $errors = [];
-        $success;
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
 
-        if(empty($story->title) || empty($story->content)){
 
-            if(empty($story->title)){
-                $errors['title'] = "* Title is required";
-            }
-
-            if(empty($story->content)){
-                $errors['content'] = "* Content is required";
-            }
-
-            return view('story.edit')->with('errors', $errors)->with('story',$story);
-            
-        }
-
-        else if(!empty($story->title) && !empty($story->content)){
-            $story->save();
-            return redirect(route('stories.show',$story->id));
-            
-        }
-
-       
+        $story->save();
+        return redirect(route('stories.show',$story->id));
+               
     }
 
     /**
@@ -156,11 +149,6 @@ class StoryController extends Controller
     {
         $story = Story::find($id);
         $story->delete();
-
-        $stories = Story::all();
-        $title = $story->title;
-        $success = "$title deleted";
-
         return redirect(route('stories.index'));
     }
 }
