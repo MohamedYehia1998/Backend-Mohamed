@@ -58,7 +58,7 @@ class StoryController extends Controller
         ]);
 
         
-        $success;
+        $success = '';
 
         // $errors = [];
 
