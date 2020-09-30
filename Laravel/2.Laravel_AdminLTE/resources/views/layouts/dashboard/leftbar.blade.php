@@ -33,13 +33,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('students.index')}}" class="nav-link active">
+                    @if(Route::current()->getName() == 'students.index')
+                        <a href="{{route('students.index')}}" class="nav-link active">
+                    @else     
+                    <a href="{{route('students.index')}}" class="nav-link">
+                    @endif    
                   <i class="far fa-circle nav-icon"></i>
                   <p>View</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                    @if(Route::current()->getName() == 'students.create')
+                    <a href="{{route('students.create')}}" class="nav-link active">
+                    @else     
+                    <a href="{{route('students.create')}}" class="nav-link">
+                    @endif  
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add</p>
                 </a>

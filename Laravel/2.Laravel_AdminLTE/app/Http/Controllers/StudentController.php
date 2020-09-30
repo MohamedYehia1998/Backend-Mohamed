@@ -15,7 +15,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = DB::table('students')->paginate(5);
+        $students = DB::table('students')->orderBy('created_at', 'desc')->paginate(6);
         
         return view('dashboard_variants.students_list')->with('students', $students);
     }
@@ -27,7 +27,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.create');
     }
 
     /**
@@ -38,7 +38,22 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $student = new Student;
+
+        $student->firstname = $request->firstname;
+        $student->lastname = $request->lastname;
+        $student->email = $request->email;
+
+
+        $validatedData = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+        ]);
+
+        $student->save();
+
+        return redirect()->route('students.index');
     }
 
     /**
@@ -49,7 +64,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = Student::find($id);
+        return view('students.show')->with('student', $student);
     }
 
     /**
@@ -60,7 +76,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        return view('students.edit')->with('student', $student);
     }
 
     /**
@@ -72,7 +89,21 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = Student::find($id);
+
+        $validatedData = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+        ]);
+
+        $student->firstname = $request->firstname;
+        $student->lastname = $request->lastname;
+        $student->email = $request->email;
+
+        $student->save();
+
+        return redirect()->route('students.index');
     }
 
     /**
@@ -83,6 +114,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+        return redirect(route('students.index'));
     }
 }

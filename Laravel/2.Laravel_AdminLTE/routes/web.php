@@ -55,6 +55,7 @@ Route::group(['middleware' => ['guest']], function () {
 
 });
 
+
 //enforce authentication in the end with middleware please!
 
 Route::group(['prefix' => 'home'], function () {

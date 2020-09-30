@@ -11,3 +11,6 @@
   <link rel="stylesheet" href="{{asset('css styles/logout.css')}}">
    <!-- Table -->
    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+   <!-- create student view -->
+

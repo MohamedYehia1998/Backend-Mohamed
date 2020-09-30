@@ -27,9 +27,14 @@
                       <td>{{$student->lastname}}</td>
                       <td>{{$student->email}}</td>
                       <td>
-                          <a class = "btn btn-primary" href="#">Show</a>
-                          <a class = "btn btn-info "href="#">Edit</a>
-                          <a class = "btn btn-danger "href="#">Delete</a>  
+                          <a class = "btn btn-primary" href="{{route('students.show', $student->id)}}">Show</a>
+                          <a class = "btn btn-info" href="{{route('students.edit', $student->id)}}">Edit</a>
+                          <form action="{{route('students.destroy',$student->id)}}" method="POST" style=display:inline>
+                              @csrf
+                              @method('DELETE')
+                              <button class ="btn btn-danger" type="Submit">Delete</button></a> 
+                          </form>
+                           
                       </td>
                     </tr>
                     @endforeach
@@ -38,10 +43,15 @@
 @endsection
 
 
+
 <!-- delete this section and the GUI works fine -->
 @section('paginators')
-<div>{{$students->links()}}</div>
+<div style=height:7px></div>
+<div>{{$students->links('pagination::bootstrap-4')}}</div>
+<div style=height:40px></div>
+<div><a class = "btn btn-primary" href="{{route('home')}}">Back to Homepage</a></div>
 @endsection
+
 
 
 
