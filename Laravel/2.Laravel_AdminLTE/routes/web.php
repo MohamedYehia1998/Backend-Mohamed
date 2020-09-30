@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\InstructorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::get('logout', function () {
 })->name('log_out');
 
 
+// if the user is authenticated, there is no need to send a forgotten password claim
+
 Route::group(['middleware' => ['guest']], function () {
     
     Route::get('forgot-password',[ForgotPasswordController::class, 'loadEmailPage'])->name('password.request');
@@ -56,9 +59,13 @@ Route::group(['middleware' => ['guest']], function () {
 });
 
 
-//enforce authentication in the end with middleware please!
+//guest can never see the tables
 
-Route::group(['prefix' => 'home'], function () {
+Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::resource('students', StudentController::class);
+});
+
+Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
+    Route::resource('instructors', InstructorController::class);
 });
 

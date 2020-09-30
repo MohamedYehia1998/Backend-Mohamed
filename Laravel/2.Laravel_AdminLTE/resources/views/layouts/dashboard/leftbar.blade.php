@@ -63,14 +63,22 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
+            <li class="nav-item">
+                    @if(Route::current()->getName() == 'instructors.index')
+                        <a href="{{route('instructors.index')}}" class="nav-link active">
+                    @else     
+                    <a href="{{route('instructors.index')}}" class="nav-link">
+                    @endif    
                   <i class="far fa-circle nav-icon"></i>
                   <p>View</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                    @if(Route::current()->getName() == 'instructors.create')
+                    <a href="{{route('instructors.create')}}" class="nav-link active">
+                    @else     
+                    <a href="{{route('instructors.create')}}" class="nav-link">
+                    @endif  
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add</p>
                 </a>

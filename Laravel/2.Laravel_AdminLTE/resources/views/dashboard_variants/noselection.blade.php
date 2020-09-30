@@ -6,12 +6,10 @@
 
 
 @section('table')
-    <div style=position:absolute;top:40%;left:10%;>
+    <div style=position:absolute;top:490%;left:75%;>
         <img src="{{asset('images/books.png')}}" alt="">
     </div>
-    <div style=position:absolute;top:490%;left:60%;>
-        <h1 style=font-size:3em;font-weight:bolder;color:white>No table selected</h1>
-    </div>
+
 @endsection
 
 
