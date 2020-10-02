@@ -1,6 +1,6 @@
 @include('layouts.common.css_links')
 
-@extends('layouts.dashboard.dashboard')
+@extends('layouts.after_login_template')
 
 @section('title')
     <h1>Edit Instructor Details</h1>

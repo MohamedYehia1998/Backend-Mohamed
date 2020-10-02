@@ -1,12 +1,12 @@
  <!-- Navbar -->
-@include('layouts.dashboard.navbar')
+@include('layouts.common.navbar')
 
 
 <!-- Main Sidebar Container -->
-@include('layouts.dashboard.leftbar')
+@include('layouts.common.leftbar')
 
 <!-- Content Wrapper. Contains page content -->
-@include('layouts.dashboard.wrapperstart')
+@include('layouts.common.wrapperstart')
 
 @yield('title')
 @yield('table')
@@ -14,4 +14,4 @@
 
 
 <!-- End Content Wrapper and render footer and control bar -->
-@include('layouts.dashboard.footer')
+@include('layouts.common.footer')

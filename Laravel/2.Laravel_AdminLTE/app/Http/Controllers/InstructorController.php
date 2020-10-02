@@ -17,7 +17,7 @@ class InstructorController extends Controller
     {
         $instructors = DB::table('instructors')->orderBy('created_at', 'desc')->paginate(6);
         
-        return view('dashboard_variants.instructors_list')->with('instructors', $instructors);
+        return view('pages.after_authentication.instructors.index')->with('instructors', $instructors);
     }
 
     /**
@@ -27,7 +27,7 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        return view('instructors.create');
+        return view('pages.after_authentication.instructors.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class InstructorController extends Controller
     public function show($id)
     {
         $instructor = Instructor::find($id);
-        return view('instructors.show')->with('instructor', $instructor);
+        return view('pages.after_authentication.instructors.show')->with('instructor', $instructor);
     }
 
     /**
@@ -79,7 +79,7 @@ class InstructorController extends Controller
     public function edit($id)
     {
         $instructor = Instructor::find($id);
-        return view('instructors.edit')->with('instructor', $instructor);
+        return view('pages.after_authentication.instructors.edit')->with('instructor', $instructor);
     }
 
     /**

@@ -1,9 +1,9 @@
 @include('layouts.common.css_links')
 
-@extends('layouts.dashboard.dashboard')
+@extends('layouts.after_login_template')
 
 @section('title')
-    <h1>Edit Student Details</h1>
+    <h1>Show Instructor</h1>
     <div style=height:15px></div>
 @endsection
 
@@ -101,9 +101,8 @@
 
 @section('table')
 
-      <form action="{{ route('students.update',$student->id) }}" method = "POST">
+      <form>
       @csrf
-      @method('PUT')
 
         @if ($errors->any())
               <ul>
@@ -117,20 +116,20 @@
         <h4 style=position:relative;left:190;display:inline>Last Name</h4>
 
         <div>
-        <input class="first-name" type="text" name="firstname" style=width:280;display:inline value="{{$student->firstname}}">
-        <input class="first-name" type="text" name="lastname" style=width:280;display:inline value="{{$student->lastname}}">
+        <input class="first-name" type="text" name="firstname" style=width:280;display:inline readonly value="{{$instructor->firstname}}">
+        <input class="first-name" type="text" name="lastname" style=width:280;display:inline readonly value="{{$instructor->lastname}}">
         </div>
 
         <h4>Email</h4>
-        <input class="first-name" type="text" name="email" value="{{$student->email}}" >
+        <input class="first-name" type="text" name="email"style=width:360 readonly value="{{$instructor->email}}">
 
-        <div class="btn-block">
-          <button type="submit">Save</button>
-        </div>
+        <h4>Occupation</h4>
+        <input class="first-name" type="text" name="occupation"style=width:280 readonly value="{{$instructor->occupation}}">
+
       </form> 
 
    
-    <a href="{{ route('students.index') }}"><button>Back</button></a>
+    <a href="{{ route('instructors.index') }}"><button>Back</button></a>
 @endsection
 
 

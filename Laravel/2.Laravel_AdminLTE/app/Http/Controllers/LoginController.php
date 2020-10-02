@@ -19,7 +19,7 @@ class LoginController extends Controller
         }
 
         else{
-            return view('sign_in')->with('error', "Invalid Credentials");
+            return view('pages.before_authentication.sign_in_up.sign_in')->with('error', "Invalid Credentials");
         }
     }
 }

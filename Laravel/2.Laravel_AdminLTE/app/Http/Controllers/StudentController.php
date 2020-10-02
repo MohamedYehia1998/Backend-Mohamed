@@ -17,7 +17,7 @@ class StudentController extends Controller
     {
         $students = DB::table('students')->orderBy('created_at', 'desc')->paginate(6);
         
-        return view('dashboard_variants.students_list')->with('students', $students);
+        return view('pages.after_authentication.students.index')->with('students', $students);
     }
 
     /**
@@ -27,7 +27,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        return view('pages.after_authentication.students.create');
     }
 
     /**
@@ -65,7 +65,7 @@ class StudentController extends Controller
     public function show($id)
     {
         $student = Student::find($id);
-        return view('students.show')->with('student', $student);
+        return view('pages.after_authentication.students.show')->with('student', $student);
     }
 
     /**
@@ -77,7 +77,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = Student::find($id);
-        return view('students.edit')->with('student', $student);
+        return view('pages.after_authentication.students.edit')->with('student', $student);
     }
 
     /**

@@ -20,21 +20,21 @@ use App\Http\Controllers\InstructorController;
  
 
 Route::get('/', function () {
-    return view('sign_in');
+    return view('pages.before_authentication.sign_in_up.sign_in');
 })->name('login');
 
 Route::post('/', [LoginController::class, 'authenticate'])->name('authentication');
 
 
 Route::get('/register', function () {
-    return view('sign_up');
+    return view('pages.before_authentication.sign_in_up.sign_up');
 })->name('sign_up');
 
 Route::post('/register', [RegisterController::class, 'store'])->name('registeration');
 
 
 Route::get('home', function () {
-    return view("home");
+    return view("pages.after_authentication.homepage.home");
 })->middleware('auth')->name('home');
 
 

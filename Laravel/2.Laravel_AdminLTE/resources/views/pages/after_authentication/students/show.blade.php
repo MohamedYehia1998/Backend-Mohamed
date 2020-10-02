@@ -1,10 +1,10 @@
 @include('layouts.common.css_links')
 
-@extends('layouts.dashboard.dashboard')
+@extends('layouts.after_login_template')
 
 @section('title')
-    <h1>Add Student</h1>
-    <div style=height:15px></div>
+    <h1>Show Student</h1>
+    <div style=height:55px></div>
 @endsection
 
 
@@ -101,32 +101,20 @@
 
 @section('table')
 
-      <form action="{{ route('students.store') }}" method = "POST">
-      @csrf
 
-        @if ($errors->any())
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li style=color:darkred;background-color:pink>{{ $error }}</li>
-                  @endforeach
-              </ul>
-      @endif
 
         <h4 style=position:relative;left:10;display:inline>First Name</h4>
         <h4 style=position:relative;left:190;display:inline>Last Name</h4>
 
         <div>
-        <input class="first-name" type="text" name="firstname" style=width:280;display:inline>
-        <input class="first-name" type="text" name="lastname" style=width:280;display:inline>
+        <input class="first-name" type="text" name="firstname" style=width:280;display:inline value="{{$student->firstname}}"readonly>
+        <input class="first-name" type="text" name="lastname" style=width:280;display:inline value="{{$student->lastname}}"readonly>
         </div>
 
         <h4>Email</h4>
-        <input class="first-name" type="text" name="email">
+        <input class="first-name" type="text" name="email" value="{{$student->email}}" readonly>
 
-        <div class="btn-block">
-          <button type="submit">Save</button>
-        </div>
-      </form> 
+
 
    
     <a href="{{ route('students.index') }}"><button>Back</button></a>

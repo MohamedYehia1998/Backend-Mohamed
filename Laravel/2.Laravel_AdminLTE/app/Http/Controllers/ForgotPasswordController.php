@@ -15,7 +15,7 @@ class ForgotPasswordController extends Controller
     
     #page where user enters their email address first
     public function loadEmailPage(){
-        return view('password_reset.forgot-password');
+        return view('pages.before_authentication.password_reset.forgot-password');
     }
 
     #send reset link to user
@@ -32,7 +32,7 @@ class ForgotPasswordController extends Controller
     }
 
     public function loadnewPasswordPage($token){
-        return view('password_reset.reset-password', ['token' => $token]);
+        return view('pages.before_authentication.password_reset.reset-password', ['token' => $token]);
     }
 
     public function updatePassword(Request $request){

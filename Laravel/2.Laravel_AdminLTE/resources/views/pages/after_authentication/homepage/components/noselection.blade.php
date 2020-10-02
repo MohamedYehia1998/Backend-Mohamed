@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.dashboard')
+@extends('layouts.after_login_template')
 
 @section('title')
     <h1>Homepage</h1>
