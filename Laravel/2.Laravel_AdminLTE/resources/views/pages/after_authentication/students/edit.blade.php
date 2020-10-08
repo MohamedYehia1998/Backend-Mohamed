@@ -124,30 +124,16 @@
         <h4>Email</h4>
         <input class="first-name" type="text" name="email" value="{{$student->email}}" >
 
-          @if(count($phones)!=0)
-              <h4>Phone Numbers</h4>
-              <ul>
-              @foreach($phones as $phone)
-                      <li>
-                          <input type="text" name="phones[]" value="{{$phone->number}}" style=width:260;display:inline>
-                      </li>
-              @endforeach
-              </ul>
-              <div>
-                  {{$phones->withQueryString()->links('pagination::simple-bootstrap-4')}}
-              </div>
-          @endif
-
-
 
         <div class="btn-block">
           <button  name="button_2" type="submit">Save</button>
         </div>
 
       </form>
+      <a href="{{ route('student.phone.index', $student->id) }}" class="btn btn-danger" style="margin-bottom: 80">Manage Phone Numbers</a>
+        <div><a href="{{ route('students.index') }}"><button>Back</button></a></div>
 
 
-    <a href="{{ route('students.index') }}"><button>Back</button></a>
 @endsection
 
 

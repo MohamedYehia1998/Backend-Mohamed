@@ -49,7 +49,6 @@
 
 
 
-<!-- delete this section and the GUI works fine -->
 @section('paginators')
 <div style=height:7px></div>
 

@@ -84,9 +84,9 @@ class StudentController extends Controller
      */
     public function edit($id)
     {   $student = Student::query()->find($id);
-        $phone_numbers = $student->phones()->paginate(3);
+        $phone_numbers = $student->phones()->latest()->paginate(3);
 
-        return view('pages.after_authentication.students.edit')->with('student', $student)->with('phones', $phone_numbers);
+        return view('pages.after_authentication.students.edit')->with('student', $student);
     }
 
     /**

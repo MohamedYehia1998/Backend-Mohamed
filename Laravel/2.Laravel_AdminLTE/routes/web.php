@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\PhoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +85,34 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
 
 //-----------------------------------------//
 
+// Student Phone number routes
 
+// Load All Phone numbers in the students.edit view
+Route::get('students/{student}/edit/phones', [PhoneController::class, 'index'])
+    ->name('student.phone.index')
+    ->middleware('auth');
+
+Route::get('students/{student}/edit/phones/create', [PhoneController::class, 'create'])
+    ->name('student.phone.create')
+    ->middleware('auth');
+
+Route::post('students/{student}/edit/phones/create', [PhoneController::class, 'store'])
+    ->name('student.phone.store')
+    ->middleware('auth');
+
+// Load the edit view of the number to be edited
+Route::get('students/{student}/edit/phones/{id}', [PhoneController::class, 'edit_specific'])
+    ->name('student.phone.edit_specific')
+    ->middleware('auth');
+
+
+Route::put('students/{student}/edit/phones/{id}', [PhoneController::class, 'update'])
+    ->name('student.phone.update')
+    ->middleware('auth');
+
+
+Route::delete('students/{student}/edit/phones/delete/{id}', [PhoneController::class, 'destroy'])
+    ->name('student.phone.destroy')
+    ->middleware('auth');
 
 
