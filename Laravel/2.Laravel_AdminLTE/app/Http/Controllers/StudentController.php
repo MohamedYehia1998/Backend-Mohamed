@@ -45,20 +45,28 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|unique:students,email',
+            'phone'=> array('required', 'regex:/^[+]{0,}[0-9]{3,}$/')
+
+        ]);
+
         $student = new Student;
 
         $student->firstname = $request->firstname;
         $student->lastname = $request->lastname;
         $student->email = $request->email;
 
-
-        $validatedData = $request->validate([
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'email' => 'required',
-        ]);
-
         $student->save();
+
+        $phone = new Phone();
+        $phone->number = $request->phone;
+
+
+        $student->phones()->saveMany([$phone]);
+
 
         return redirect()->route('students.index');
     }

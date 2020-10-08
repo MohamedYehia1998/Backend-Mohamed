@@ -12,6 +12,7 @@
 <form method="GET" action="{{route('students.search')}}">
     <input name="search" type="search" placeholder="Search..." autofocus  value = "{{ request()->query('search') }}"/>
     <button type="submit" class ="btn-danger" style=border-radius:16px;>Go</button>
+    <a class = "btn btn-secondary" href="{{route('students.index')}}">Reset</a>
 </form>
 
 <table class="w3-table-all w3-medium" style= margin-left:auto;margin-right:auto;width:160%>
@@ -59,9 +60,8 @@
 
 <div>{{$students->withQueryString()->links()}}</div>
 <div style=height:10px></div>
-<div>Search results: {{$students->total()}} items</div>
+<div>Search results: {{$students->total()}} Students</div>
 <div style=height:10px></div>
-<div><a class = "btn btn-primary" href="{{route('home')}}">Back to Homepage</a></div>
 @endsection
 
 

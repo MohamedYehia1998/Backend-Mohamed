@@ -13,7 +13,7 @@
         html, body {
       min-height: 100%;
       }
-      body, div, form, input, p { 
+      body, div, form, input, p {
 
       }
       h1 {
@@ -33,8 +33,8 @@
       form {
       width: 100%;
       padding: 20px;
-      
-    
+
+
       }
       input {
       width: calc(100% - 10px);
@@ -81,9 +81,9 @@
       width: 150px;
       padding: 10px;
       border: none;
-      -webkit-border-radius: 5px; 
-      -moz-border-radius: 5px; 
-      border-radius: 5px; 
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
       background-color: #095484;
       font-size: 16px;
       color: #fff;
@@ -123,12 +123,15 @@
         <h4>Email</h4>
         <input class="first-name" type="text" name="email">
 
+          <h4>Phone Number</h4>
+          <input class="first-name" type='text' name="phone">
+
         <div class="btn-block">
           <button type="submit">Save</button>
         </div>
-      </form> 
+      </form>
 
-   
+
     <a href="{{ route('students.index') }}"><button>Back</button></a>
 @endsection
 

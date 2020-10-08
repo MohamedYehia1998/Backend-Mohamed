@@ -8,17 +8,7 @@ use Illuminate\Http\Request;
 
 class PhoneController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create($student_id)
     {
         $student = Student::query()->find($student_id);
@@ -26,14 +16,14 @@ class PhoneController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request, $student_id)
     {
+        $validatedData = $request->validate([
+            'new_phone'=> array('required', 'regex:/^[+]{0,}[0-9]{3,}$/')
+        ]);
+
+
         $student = Student::query()->find($student_id);
 
         $new_phone = new Phone();
@@ -44,20 +34,7 @@ class PhoneController extends Controller
         return redirect()->route('student.phone.index', $student_id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Phone  $phone
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Phone  $phone
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index($id)
     {
         $student = Student::query()->find($id);
@@ -76,15 +53,13 @@ class PhoneController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Phone  $phone
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $student_id, $phone_id)
     {
+        $validatedData = $request->validate([
+            'new_phone'=> array('required', 'regex:/^[+]{0,}[0-9]{3,}$/')
+        ]);
+
         $old_phone = Phone::query()->find($phone_id);
 
         $old_phone->number = $request->new_phone;
@@ -95,12 +70,7 @@ class PhoneController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Phone  $phone
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Request $request, $student_id, $phone_id)
     {
         $old_phone = Phone::query()->find($phone_id);

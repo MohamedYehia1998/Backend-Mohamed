@@ -15,6 +15,7 @@
 <form method="GET" action="{{route('instructors.search')}}">
     <input name="search" type="search" placeholder="Search..." autofocus value = "{{ request()->query('search') }}"/>
     <button type="submit" class ="btn-danger" style=border-radius:16px;>Go</button>
+    <a class = "btn btn-secondary" href="{{route('instructors.index')}}">Reset</a>
 </form>
 
 
@@ -60,9 +61,8 @@
 <div style=height:7px></div>
 <div>{{$instructors->withQueryString()->links('pagination::bootstrap-4')}}</div>
 <div style=height:10px></div>
-<div>Search results: {{$instructors->total()}} items</div>
+<div>Search results: {{$instructors->total()}} Instructors</div>
 <div style=height:10px></div>
-<div><a class = "btn btn-primary" href="{{route('home')}}">Back to Homepage</a></div>
 @endsection
 
 

@@ -16,7 +16,7 @@ class InstructorController extends Controller
     public function index()
     {
         $instructors = DB::table('instructors')->orderBy('created_at', 'desc')->paginate(6);
-        
+
         return view('pages.after_authentication.instructors.index')->with('instructors', $instructors);
     }
 
@@ -49,7 +49,7 @@ class InstructorController extends Controller
         $validatedData = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:instructors,email',
             'occupation' => 'required',
         ]);
 
@@ -124,16 +124,17 @@ class InstructorController extends Controller
     }
 
     public function search(Request $request){
-        
+
         if (empty($request)) {
             $instructors = DB::table('instructors')->orderBy('created_at', 'desc')->paginate(6);
         }
 
         else{
-            $instructors= 
+            $instructors=
             Instructor::query()
             ->where('firstname', 'LIKE', "%".$request->query('search')."%")  //query because it's a get method. Input when it's a post
             ->orderBy('created_at', 'desc')
+                ->orWhere('id',"=", $request->search)
             ->paginate(6);
         }
 
