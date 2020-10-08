@@ -3,8 +3,7 @@
 @extends('layouts.after_login_template')
 
 @section('title')
-    <h1>Show Student</h1>
-    <div style=height:55px></div>
+    <h1 style="margin-bottom: 30px;color: #fa6362">Student {{$student->firstname}} {{$student->lastname}}</h1>
 @endsection
 
 
@@ -13,7 +12,7 @@
         html, body {
       min-height: 100%;
       }
-      body, div, form, input, p { 
+      body, div, form, input, p {
 
       }
       h1 {
@@ -33,8 +32,8 @@
       form {
       width: 100%;
       padding: 20px;
-      
-    
+
+
       }
       input {
       width: calc(100% - 10px);
@@ -81,9 +80,9 @@
       width: 150px;
       padding: 10px;
       border: none;
-      -webkit-border-radius: 5px; 
-      -moz-border-radius: 5px; 
-      border-radius: 5px; 
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
       background-color: #095484;
       font-size: 16px;
       color: #fff;
@@ -114,10 +113,16 @@
         <h4>Email</h4>
         <input class="first-name" type="text" name="email" value="{{$student->email}}" readonly>
 
+        @if(count($phones)!=0)
+            <h4>Phone Numbers</h4>
+            @foreach($phones as $phone)
+                <input class="first-name" type="text" name="phone" value="{{$phone->number}}" readonly style="margin-bottom:2">
+            @endforeach
+        @endif
 
+    {{$phones->links('pagination::simple-bootstrap-4')}}
 
-   
-    <a href="{{ route('students.index') }}"><button>Back</button></a>
+    <a href="{{ route('students.index') }}"><button style="margin-top:4">Back</button></a>
 @endsection
 
 

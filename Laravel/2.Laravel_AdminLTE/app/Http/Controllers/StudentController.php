@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Phone;
+use Illuminate\Auth\EloquentUserProvider;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use Illuminate\Support\Facades\DB;
@@ -15,10 +17,15 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = DB::table('students')->orderBy('created_at', 'desc')->paginate(6);
-        
+        $students =
+        Student::query()
+            ->orderBy("created_at", "desc")
+            ->paginate(6);
+
         return view('pages.after_authentication.students.index')->with('students', $students);
+
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -64,8 +71,9 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = Student::find($id);
-        return view('pages.after_authentication.students.show')->with('student', $student);
+        $student = Student::query()->find($id);
+        $phone_numbers = $student->phones()->paginate(3);
+        return view('pages.after_authentication.students.show')->with('student', $student)->with('phones', $phone_numbers) ;
     }
 
     /**
@@ -75,9 +83,10 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $student = Student::find($id);
-        return view('pages.after_authentication.students.edit')->with('student', $student);
+    {   $student = Student::query()->find($id);
+        $phone_numbers = $student->phones()->paginate(3);
+
+        return view('pages.after_authentication.students.edit')->with('student', $student)->with('phones', $phone_numbers);
     }
 
     /**
@@ -91,6 +100,7 @@ class StudentController extends Controller
     {
         $student = Student::find($id);
 
+
         $validatedData = $request->validate([
             'firstname' => 'required',
             'lastname' => 'required',
@@ -100,6 +110,7 @@ class StudentController extends Controller
         $student->firstname = $request->firstname;
         $student->lastname = $request->lastname;
         $student->email = $request->email;
+
 
         $student->save();
 
@@ -118,4 +129,26 @@ class StudentController extends Controller
         $student->delete();
         return redirect(route('students.index'));
     }
+
+    public function search(Request $request){
+
+        if(empty($request)){
+            return redirect()->back();  // stay at the same page
+        }
+
+        else{
+            $students =
+            DB::table('students')
+            ->where('firstname', "LIKE", "%".$request->search."%")
+            ->orWhere('id',"=", $request->search)
+            ->orderBy('created_at', 'desc')
+            ->paginate(6);
+
+            return view('pages.after_authentication.students.index')->with('students', $students);
+        }
+
+    }
+
+
+
 }

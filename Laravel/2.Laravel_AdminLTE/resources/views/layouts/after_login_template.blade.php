@@ -13,5 +13,7 @@
 @yield('paginators')
 
 
+
+
 <!-- End Content Wrapper and render footer and control bar -->
 @include('layouts.common.footer')

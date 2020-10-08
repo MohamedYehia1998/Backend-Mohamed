@@ -6,14 +6,14 @@ use App\Models\Phone;
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class  StudentFactory extends Factory
+class PhoneFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Student::class;
+    protected $model = Phone::class;
 
     /**
      * Define the model's default state.
@@ -23,9 +23,8 @@ class  StudentFactory extends Factory
     public function definition()
     {
         return [
-            'firstname' => $this->faker->firstName,
-            'lastname' => $this->faker->lastName,
-            'email' => $this->faker->unique()->safeEmail,
+            'number'=>$this->faker->phoneNumber,
+            'student_id'=>random_int(1, Student::query()->count())
         ];
     }
 }

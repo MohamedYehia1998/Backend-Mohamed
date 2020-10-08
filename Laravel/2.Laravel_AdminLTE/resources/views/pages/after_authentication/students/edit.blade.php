@@ -3,7 +3,7 @@
 @extends('layouts.after_login_template')
 
 @section('title')
-    <h1>Edit Student Details</h1>
+    <h1 style="color: #fa6362">Edit Student  {{$student->firstname}} {{$student->lastname}} Details</h1>
     <div style=height:15px></div>
 @endsection
 
@@ -13,7 +13,7 @@
         html, body {
       min-height: 100%;
       }
-      body, div, form, input, p { 
+      body, div, form, input, p {
 
       }
       h1 {
@@ -33,8 +33,8 @@
       form {
       width: 100%;
       padding: 20px;
-      
-    
+
+
       }
       input {
       width: calc(100% - 10px);
@@ -81,9 +81,9 @@
       width: 150px;
       padding: 10px;
       border: none;
-      -webkit-border-radius: 5px; 
-      -moz-border-radius: 5px; 
-      border-radius: 5px; 
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
       background-color: #095484;
       font-size: 16px;
       color: #fff;
@@ -124,12 +124,29 @@
         <h4>Email</h4>
         <input class="first-name" type="text" name="email" value="{{$student->email}}" >
 
-        <div class="btn-block">
-          <button type="submit">Save</button>
-        </div>
-      </form> 
+          @if(count($phones)!=0)
+              <h4>Phone Numbers</h4>
+              <ul>
+              @foreach($phones as $phone)
+                      <li>
+                          <input type="text" name="phones[]" value="{{$phone->number}}" style=width:260;display:inline>
+                      </li>
+              @endforeach
+              </ul>
+              <div>
+                  {{$phones->withQueryString()->links('pagination::simple-bootstrap-4')}}
+              </div>
+          @endif
 
-   
+
+
+        <div class="btn-block">
+          <button  name="button_2" type="submit">Save</button>
+        </div>
+
+      </form>
+
+
     <a href="{{ route('students.index') }}"><button>Back</button></a>
 @endsection
 

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Factories\InstructorFactory;
 use Illuminate\Database\Seeder;
 
 class InstructorSeeder extends Seeder
@@ -13,6 +14,6 @@ class InstructorSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Instructor::factory(24)->create();
+        InstructorFactory::times(200)->create();
     }
 }

@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Student;
+use Database\Factories\PhoneFactory;
+use Database\Factories\StudentFactory;
 use Illuminate\Database\Seeder;
 
-class StudentSeeder extends Seeder
+class PhoneSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +16,6 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        Student::factory()->times(200)->create();
+        PhoneFactory::times(2000)->create();
     }
 }

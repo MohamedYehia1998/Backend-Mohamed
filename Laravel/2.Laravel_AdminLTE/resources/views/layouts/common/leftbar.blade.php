@@ -10,7 +10,7 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
+        <div class="image"z>
           <img src="{{asset('images/user.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
@@ -33,25 +33,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                    @if(Route::current()->getName() == 'students.index')
-                        <a href="{{route('students.index')}}" class="nav-link active">
-                    @else     
-                    <a href="{{route('students.index')}}" class="nav-link">
-                    @endif    
+                  <a href="{{route('students.index')}}" class="nav-link {{\Illuminate\Support\Facades\Route::currentRouteName()=='students.index' ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View</p>
                 </a>
               </li>
+
               <li class="nav-item">
-                    @if(Route::current()->getName() == 'students.create')
-                    <a href="{{route('students.create')}}" class="nav-link active">
-                    @else     
-                    <a href="{{route('students.create')}}" class="nav-link">
-                    @endif  
+                  <a href="{{route('students.create')}}" class="nav-link {{\Illuminate\Support\Facades\Route::currentRouteName()=='students.create' ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add</p>
                 </a>
               </li>
+
             </ul>
           </li>
           <li class="nav-item has-treeview menu-open">
@@ -64,22 +58,14 @@
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-                    @if(Route::current()->getName() == 'instructors.index')
-                        <a href="{{route('instructors.index')}}" class="nav-link active">
-                    @else     
-                    <a href="{{route('instructors.index')}}" class="nav-link">
-                    @endif    
+                    <a href="{{route('instructors.index')}}" class="nav-link {{\Illuminate\Support\Facades\Route::currentRouteName()=='instructors.index' ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View</p>
                 </a>
               </li>
               <li class="nav-item">
-                    @if(Route::current()->getName() == 'instructors.create')
-                    <a href="{{route('instructors.create')}}" class="nav-link active">
-                    @else     
-                    <a href="{{route('instructors.create')}}" class="nav-link">
-                    @endif  
-                  <i class="far fa-circle nav-icon"></i>
+                  <a href="{{route('instructors.create')}}" class="nav-link {{\Illuminate\Support\Facades\Route::currentRouteName()=='instructors.create' ? 'active' : ''}}">
+                      <i class="far fa-circle nav-icon"></i>
                   <p>Add</p>
                 </a>
               </li>

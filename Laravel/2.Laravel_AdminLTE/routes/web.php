@@ -17,8 +17,8 @@ use App\Http\Controllers\InstructorController;
 | contains the "web" middleware group. Now create something great!
 |
 */
- 
 
+//  Login and Sign Up
 Route::get('/', function () {
     return view('pages.before_authentication.sign_in_up.sign_in');
 })->name('login');
@@ -43,11 +43,23 @@ Route::get('logout', function () {
     return redirect()->route('login');
 })->name('log_out');
 
+//-----------------------------------------//
+// Search routes
 
-// if the user is authenticated, there is no need to send a forgotten password claim
+Route::group(['prefix' => 'instructors', 'middleware' => ['auth']], function () {
+    Route::get('/search', [InstructorController::class, 'search'])->name('instructors.search');
+});
+
+Route::group(['prefix' => 'students', 'middleware' => ['auth']], function () {
+    Route::get('/search', [StudentController::class, 'search'])->name('students.search');
+});
+
+//-----------------------------------------//
+
+// Forgotten Passwordif the user is authenticated, there is no need to send a forgotten password claim
 
 Route::group(['middleware' => ['guest']], function () {
-    
+
     Route::get('forgot-password',[ForgotPasswordController::class, 'loadEmailPage'])->name('password.request');
 
     Route::post('forgot-password', [ForgotPasswordController::class, 'sendLink'])->name('password.email');
@@ -58,8 +70,9 @@ Route::group(['middleware' => ['guest']], function () {
 
 });
 
+//-----------------------------------------//
 
-//guest can never see the tables
+//Student and Instructor Table
 
 Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::resource('students', StudentController::class);
@@ -68,4 +81,9 @@ Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
 Route::group(['prefix' => 'home', 'middleware' => ['auth']], function () {
     Route::resource('instructors', InstructorController::class);
 });
+
+//-----------------------------------------//
+
+
+
 

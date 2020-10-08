@@ -18,7 +18,7 @@
 @endphp
 
 
-@if($route == 'students.index' || $route == 'instructors.index')
+@if($route != 'login')
 
     <div id="myDiv" class="wrapper">
           @include('pages.after_authentication.homepage.components.noselection')

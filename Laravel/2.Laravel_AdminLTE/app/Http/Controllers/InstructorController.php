@@ -97,11 +97,13 @@ class InstructorController extends Controller
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required',
+            'occupation' => 'required',
         ]);
 
         $instructor->firstname = $request->firstname;
         $instructor->lastname = $request->lastname;
         $instructor->email = $request->email;
+        $instructor->occupation = $request->occupation;
 
         $instructor->save();
 
@@ -119,5 +121,22 @@ class InstructorController extends Controller
         $instructor = Instructor::find($id);
         $instructor->delete();
         return redirect()->route('instructors.index');
+    }
+
+    public function search(Request $request){
+        
+        if (empty($request)) {
+            $instructors = DB::table('instructors')->orderBy('created_at', 'desc')->paginate(6);
+        }
+
+        else{
+            $instructors= 
+            Instructor::query()
+            ->where('firstname', 'LIKE', "%".$request->query('search')."%")  //query because it's a get method. Input when it's a post
+            ->orderBy('created_at', 'desc')
+            ->paginate(6);
+        }
+
+        return view('pages.after_authentication.instructors.index')->with('instructors', $instructors);
     }
 }
