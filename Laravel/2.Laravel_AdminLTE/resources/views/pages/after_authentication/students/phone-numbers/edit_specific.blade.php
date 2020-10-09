@@ -117,6 +117,10 @@
         <h4>New Phone Number</h4>
         <input class="first-name" type="text" name="new_phone" value="{{$phone->number}}" required >
 
+        <div class="phones">
+
+        </div>
+
 
         <div class="btn-block">
             <button  name="button_2" type="submit">Save</button>

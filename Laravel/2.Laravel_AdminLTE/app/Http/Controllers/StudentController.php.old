@@ -130,14 +130,23 @@ class StudentController extends Controller
 //            $phones[$id]['id'] = $id;
 //            $phones[$id]['number'] = $phone;
 //
-            $phones[] = [
-                'number' => $phone,
-                'student_id' => $student->id
-            ];
-        }
+//            $phones[] = [
+//                'id' => $id,
+//                'number' => $phone
+//            ];
 
-        $student->phones()->delete();
-        Phone::query()->insert($phones);
+            $phoneNumber = $student->phones()->find($id);
+            if ($phoneNumber) {
+                $phoneNumber->number = $phone;
+                $phoneNumber->save();
+            } else {
+                $newPhone = new Phone();
+                $newPhone->student_id = $student->id;
+                $newPhone->number = $phone;
+                $newPhone->save();
+            }
+
+        }
 
         return redirect()->route('students.index');
     }
