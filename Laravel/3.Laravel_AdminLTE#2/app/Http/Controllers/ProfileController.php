@@ -22,9 +22,21 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
+        $extension = strval($request->file('image')->extension());
+
+        // only image formats allowed
+        if(!in_array($extension, ['jpg', 'jpeg', 'png', 'bmp'])){
+            return redirect()->back()->with('message', "File Format Not Supported");
+        }
+
+        if(Auth::user()->image != 'images/no_pic.jpg'){  // remove previous image from storage
+            unlink(Auth::user()->image);   // erase from storage
+        }
+
+
         $image = $request->file('image');
         $directory = 'uploads/' . strval(Auth::user()->id . '_' . str_replace(' ', '', Auth::user()->name)) . '/image';
-        $image_name = strval(time()) . '.jpg';
+        $image_name = strval(time()) . $extension;
 
 
         $image->move($directory, $image_name);
@@ -41,6 +53,9 @@ class ProfileController extends Controller
 
     public function delete()
     {
+        if(Auth::user()->image != 'images/no_pic.jpg'){
+            unlink(Auth::user()->image);   // erase from storage
+        }
 
         Auth::user()->image = 'images/no_pic.jpg';
 

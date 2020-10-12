@@ -15,6 +15,10 @@
         $path = strval(\Illuminate\Support\Facades\Auth::user()->image);
     @endphp
 
+    @if((session('message')!=''))
+            <script type="text/javascript">alert("{{ session('message') }}");</script>
+    @endif
+
         <img src="{{asset($path)}}"  style="border-radius: 50%; height:360px; width: 360px; object-fit: cover; margin-left: 400px; margin-bottom: 10px" alt="Avatar">
 
 
