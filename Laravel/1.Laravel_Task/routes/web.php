@@ -18,4 +18,6 @@ Route::get('/', function () {
     return redirect(route('stories.index'));
 });
 
-Route::resource('stories', StoryController::class);
+Route::group(['prefix' => "admin"], function(){
+    Route::resource('stories', StoryController::class);
+});

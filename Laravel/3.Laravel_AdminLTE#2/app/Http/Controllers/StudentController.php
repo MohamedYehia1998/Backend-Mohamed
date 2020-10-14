@@ -82,6 +82,7 @@ class StudentController extends Controller
         $student = Student::query()->find($id);
         $phone_numbers = $student->phones()->paginate(3);
         return view('pages.after_authentication.students.show')->with('student', $student)->with('phones', $phone_numbers) ;
+
     }
 
     /**
