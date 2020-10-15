@@ -1,25 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $categories =
             Category::query()
-            ->latest()
-            ->paginate(10);
+                ->latest()
+                ->paginate(10);
 
-        return view('category.index',['categories' => $categories]);
+        return response()->json($categories);
+
     }
 
     /**
@@ -31,7 +29,8 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         Category::query()->create($request->all());
-        return redirect()->back();
+
+        return response()->json(null,201);
     }
 
     /**
@@ -42,20 +41,20 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        $products = $category->products()->paginate(10);;
-        return view('category.show', ['products' => $products, 'category' => $category]);
+        $products = $category->products()->paginate(10);
 
+        return response()->json(['category' => $category, 'products' => $products], 200);
     }
 
     public function search(Request $request){
         $categories =
             Category::query()
-            ->select("*")
-            ->where('id', '=', $request->search)
-            ->orWhere('name', 'LIKE', '%' . $request->search . '%')
-            ->paginate(10);
+                ->select("*")
+                ->where('id', '=', $request->search)
+                ->orWhere('name', 'LIKE', '%' . $request->search . '%')
+                ->paginate(10);
 
-        return view('category.index', ['categories' => $categories]);
+        return response()->json($categories, 200);
     }
 
 
@@ -70,7 +69,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $category->update($request->all());
-        return redirect()->back();
+        return response()->json(null, 200);
     }
 
     /**
@@ -79,6 +78,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->back();
+        return response()->json(null, 200);
     }
 }
