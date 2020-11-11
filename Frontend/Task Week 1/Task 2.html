@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 2</title>
+    <style>
+        .letter {
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            margin: 26px auto 0;
+            max-width: 850px;
+            min-height: 800px;
+            padding: 24px;
+            position: relative;
+            width: 80%;
+        }
+        .letter:before, .letter:after {
+            content: "";
+            height: 98%;
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+        }
+        .letter:before {
+            background: #fafafa;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            left: -5px;
+            top: 4px;
+            transform: rotate(-2.5deg);
+        }
+        .letter:after {
+            background: #f6f6f6;
+            box-shadow: 0 0 3px rgba(0,0,0,0.2);
+            right: -3px;
+            top: 1px;
+            transform: rotate(1.4deg);
+        }
+
+        body{
+            background: linear-gradient(to bottom, khaki 0%, khaki 10%, bisque 10%, bisque 11%, lightblue 11%, lightblue 100%);
+        }
+    </style>
+</head>
+<body>
+<div>
+    <i style="display: block"><a href= "Task1.html">Click Here for Task 1</a></i>
+    <i>Written and Coded by </i><i style="color: darkred">Mohamed Yehia Abdellatif Mohamed Ghanem</i>
+</div>
+    <div class="letter">
+        <h2><p style="text-align: center">Application Form to Date My Daughter</p></h2>
+        <p> <b>Note:</b> Form is to be completed 21 days prior to data </p>
+
+            <form action="">
+                <div style="border-style: solid">
+                    <h4 style="margin-left: 10px"> Personal Details</h4>
+
+                    <label style="margin-left: 15px">Name:</label>
+                    <input type="text" name="name" placeholder="Enter name here" required> <br><br>
+
+                    <label style="margin-left: 15px">Address:</label>
+                    <input type="text" name="address" placeholder="Enter address here" required> <br><br>
+
+                    <label style="margin-left: 15px">Email:</label>
+                    <input type="email" name="email" placeholder="Enter email here" required> <br><br>
+
+                    <label style="margin-left: 15px">Phone Number:</label>
+                    <input type="tel" name="phone" placeholder="Enter 10 digit number here" required> <br><br>
+
+                    <label style="margin-left: 15px">IQ:</label>
+                    <input type="number" name="phone" placeholder="Enter IQ here" required> <br><br>
+
+                    <label style="margin-left: 15px">Gender:</label> <br>
+
+                    <input type="radio"  name="gender" value="male" style="margin-left: 25px">
+                    <label>Male</label><br>
+
+                    <input type="radio" name="gender" value="female" style="margin-left: 25px">
+                    <label>Female</label><br>
+
+                    <input type="radio" name="gender" value="other" style="margin-left: 25px">
+                    <label>Other</label> <br><br>
+
+                    <input type="checkbox" name="tattoo" style="margin-left: 15px">
+                    <label>I have tattoos</label>
+                    <input type="checkbox" name="tattoo" style="margin-left: 15px">
+                    <label>I have piercings</label> <br><br>
+
+                    <label style="margin-left: 15px">Date of Proposed Outing:</label>
+                    <input type="date" name="outing_date" style="margin-bottom: 10px">
+
+                </div>
+                <div style="border-style: solid;margin-top: 10px">
+                    <h4 style="margin-left: 10px">Educational Background</h4>
+
+                    <label style="margin-left: 15px">University Name:</label>
+                    <input type="text" name="uni" placeholder="Enter university name here" required> <br><br>
+
+                    <label style="margin-left: 15px">University Program:</label>
+                    <select name="" >
+                        <option value="bsc">BSc</option>
+                        <option value="msc">MSc</option>
+                        <option value="phd">PhD</option>
+                    </select>
+                    <input type="text" name="program" placeholder="e.g Computer Science" required> <br><br>
+
+                    <label style="margin-left: 15px">IELTS Score:</label>
+                    <input type="number" name="phone" placeholder="Enter IELTS score here" required> <br><br>
+
+                    <label style="margin-left: 15px">Did you graduate:</label> <br>
+
+                    <input type="radio"  name="grad" value="yes" style="margin-left: 25px">
+                    <label>Yes</label><br>
+
+                    <input type="radio" name="grad" value="no" style="margin-left: 25px">
+                    <label>No</label><br><br>
+                </div>
+
+                    <button type="submit" style=margin-top:10px>Submit</button>
+
+
+            </form>
+
+
+
+    </div>
+
+
+
+
+</body>
+</html>
