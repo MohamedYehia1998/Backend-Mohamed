@@ -1,0 +1,40 @@
+/*First section styles*/
+
+.section2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: indigo;
+    margin-top: 40px;
+}
+
+.sec2_title{
+    padding-top: 40px;
+}
+
+.section2 .pictures2a{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.section2 .pictures2a img{
+    padding: 0 100px;
+}
+
+.section2 .pictures2b{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+.section2 .pictures2b img{
+    padding: 0 100px;
+}
+
+
