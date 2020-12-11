@@ -1,0 +1,33 @@
+.contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: indigo;
+    margin-top: 40px;
+}
+
+.contact form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contact input {
+    border: 0;
+    font-size: 13px;
+    font-weight: 300;
+    color: #797A9E;
+    letter-spacing: 0.11em;
+    border-radius: 10px;
+}
+
+.btn_O{
+    background-color: darkorange;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.btn_O:hover{
+    background-color: chocolate;
+}

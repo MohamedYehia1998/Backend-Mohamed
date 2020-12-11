@@ -1,0 +1,29 @@
+/*First section styles*/
+
+.section1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("restaurant.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.section1 .picture{
+    padding-top: 90px;
+}
+
+.motto{
+    padding-top: 40px;
+    font-size: 50px;
+    font-family: 'Anton', sans-serif;
+    color: darkorange;
+}
+
+.separator{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
